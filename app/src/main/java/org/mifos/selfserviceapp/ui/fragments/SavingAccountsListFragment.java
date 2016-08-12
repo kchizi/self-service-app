@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import org.mifos.selfserviceapp.R;
+import org.mifos.selfserviceapp.data.accounts.Account;
 import org.mifos.selfserviceapp.data.accounts.SavingAccount;
 import org.mifos.selfserviceapp.presenters.SavingAccountsListPresenter;
 import org.mifos.selfserviceapp.ui.activities.BaseActivity;
@@ -45,7 +46,7 @@ public class SavingAccountsListFragment extends Fragment implements RecyclerItem
     private int clientId;
     private View view;
     private ProgressDialog progressDialog;
-    private List<SavingAccount> savingAccountsList = new ArrayList<>();
+    private List<Account> savingAccountsList = new ArrayList<>();
     private LinearLayoutManager layoutManager;
     private SavingAccountsListAdapter savingAccountsListAdapter;
 
@@ -113,7 +114,7 @@ public class SavingAccountsListFragment extends Fragment implements RecyclerItem
     }
 
     @Override
-    public void showSavingAccounts(List<SavingAccount> savingAccountsList) {
+    public void showSavingAccounts(List<Account> savingAccountsList) {
         this.savingAccountsList = savingAccountsList;
         inflateSavingAccountsList();
         if (swipeSavingContainer.isRefreshing())

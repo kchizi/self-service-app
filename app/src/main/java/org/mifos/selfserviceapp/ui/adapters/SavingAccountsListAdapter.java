@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.mifos.selfserviceapp.R;
+import org.mifos.selfserviceapp.data.accounts.Account;
 import org.mifos.selfserviceapp.data.accounts.SavingAccount;
 
 import java.util.ArrayList;
@@ -23,15 +24,15 @@ import butterknife.ButterKnife;
 public class SavingAccountsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
     private final LayoutInflater layoutInflater;
-    private List<SavingAccount> savingAccountsList = new ArrayList<>();
+    private List<Account> savingAccountsList = new ArrayList<>();
 
-    public SavingAccountsListAdapter(Context context, List<SavingAccount> savingAccountsList) {
+    public SavingAccountsListAdapter(Context context, List<Account> savingAccountsList) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.savingAccountsList = savingAccountsList;
     }
 
-    public SavingAccount getItem(int position) {
+    public Account getItem(int position) {
         return savingAccountsList.get(position);
     }
 
@@ -48,7 +49,7 @@ public class SavingAccountsListAdapter extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof RecyclerView.ViewHolder) {
 
-            SavingAccount savingAccount = getItem(position);
+            Account savingAccount = getItem(position);
             ((ViewHolder) holder).tv_clientSavingAccountNumber.setText(savingAccount.getAccountNo().toString());
             ((ViewHolder) holder).tv_savingAccountProductName.setText(savingAccount.getProductName());
 

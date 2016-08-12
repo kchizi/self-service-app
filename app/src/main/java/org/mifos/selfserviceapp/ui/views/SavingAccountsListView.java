@@ -1,5 +1,6 @@
 package org.mifos.selfserviceapp.ui.views;
 
+import org.mifos.selfserviceapp.data.accounts.Account;
 import org.mifos.selfserviceapp.data.accounts.SavingAccount;
 import org.mifos.selfserviceapp.ui.views.base.MVPView;
 
@@ -24,5 +25,5 @@ public interface SavingAccountsListView extends MVPView {
      *
      * @param savingAccountsList List containing saving accounts of a particular client
      */
-    void showSavingAccounts(List<SavingAccount> savingAccountsList);
+    void showSavingAccounts(List<Account> savingAccountsList);
 }

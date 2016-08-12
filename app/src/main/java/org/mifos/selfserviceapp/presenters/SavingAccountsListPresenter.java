@@ -4,6 +4,8 @@ import android.content.Context;
 
 import org.mifos.selfserviceapp.R;
 import org.mifos.selfserviceapp.api.DataManager;
+import org.mifos.selfserviceapp.data.accounts.Account;
+import org.mifos.selfserviceapp.data.accounts.AccountListResponse;
 import org.mifos.selfserviceapp.data.accounts.SavingAccount;
 import org.mifos.selfserviceapp.injection.ActivityContext;
 import org.mifos.selfserviceapp.presenters.base.BasePresenter;
@@ -37,17 +39,17 @@ public class SavingAccountsListPresenter extends BasePresenter<SavingAccountsLis
     }
 
     public void loadSavingAccountsList(int clientId) {
-        Call<SavingAccount> call = dataManager.getSavingAccounts(clientId);
+        Call<AccountListResponse> call = dataManager.getAccounts(clientId, "savingsAccounts");
         getMvpView().showProgress();
 
-        call.enqueue(new Callback<SavingAccount>() {
+        call.enqueue(new Callback<AccountListResponse>() {
             @Override
-            public void onResponse(Response<SavingAccount> response) {
+            public void onResponse(Response<AccountListResponse> response) {
                 getMvpView().hideProgress();
 
                 if (response.code() == 200) {
-                    SavingAccount savingAccount = response.body();
-                    List<SavingAccount> savingAccountsList = response.body().getSavingsAccounts();
+                    AccountListResponse savingAccount = response.body();
+                    List<Account> savingAccountsList = response.body().getAccounts();
                     if (savingAccount != null) {
                         getMvpView().showSavingAccounts(savingAccountsList);
                     }
